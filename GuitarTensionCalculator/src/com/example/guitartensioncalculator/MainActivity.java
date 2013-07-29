@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
 //	            E - 329.6
 	    gtc.freq = 329.6;
 //	    gtc.unitWeight = .000022;
-	    Log.i("test", Double.toString(gtc.calculateTension()));
+	    Log.i("test1", Double.toString(gtc.calculateTension()));
 	}
 
 	@Override
