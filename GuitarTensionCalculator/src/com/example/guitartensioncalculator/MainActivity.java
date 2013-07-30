@@ -2,17 +2,40 @@ package com.example.guitartensioncalculator;
 
 import guitarTensionCalc.GuitarTensionCalc;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//setContentView(R.layout.activity_main);
 		setContentView(R.layout.activity_main);
-	    
+		TextView text = (TextView)findViewById(R.id.textView1);
+		text.setText("Test");
+		// Getting listview from xml
+		ListView stringList = (ListView) findViewById(R.id.GuitarStringList);
+		 
+		// Creating a button - Load More
+		Button addStringButton = new Button(this);
+		addStringButton.setText("+Add String");
+		 
+		// Adding button to listview at footer
+		stringList.addFooterView(addStringButton);
+		
+		Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
+		startActivity(intent);
+		
+		
+	
+
+		
 		
 		
 		GuitarTensionCalc gtc = new GuitarTensionCalc();
