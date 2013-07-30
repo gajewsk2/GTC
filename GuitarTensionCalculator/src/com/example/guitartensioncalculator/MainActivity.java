@@ -1,8 +1,10 @@
 package com.example.guitartensioncalculator;
 
 import guitarTensionCalc.GuitarTensionCalc;
+
+import java.util.ArrayList;
+
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -25,16 +27,19 @@ public class MainActivity extends Activity {
 		// Creating a button - Load More
 		Button addStringButton = new Button(this);
 		addStringButton.setText("+Add String");
-		 
+		
+		TextView headerTitle = new TextView(this);
+		headerTitle.setText("This is the Title");
 		// Adding button to listview at footer
+		stringList.addHeaderView(headerTitle);
 		stringList.addFooterView(addStringButton);
 		
-		Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
-		startActivity(intent);
+		//Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
+		//startActivity(intent);
 		
 		
-	
-
+		final ArrayList<GuitarTensionCalc> stringArray = new ArrayList<GuitarTensionCalc>();
+		//final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray, )
 		
 		
 		
