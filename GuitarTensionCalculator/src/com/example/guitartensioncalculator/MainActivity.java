@@ -19,27 +19,29 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		setContentView(R.layout.activity_main);
-		TextView text = (TextView)findViewById(R.id.textView1);
-		text.setText("Test");
+		
+		
 		// Getting listview from xml
 		ListView stringList = (ListView) findViewById(R.id.GuitarStringList);
 		 
-		// Creating a button - Load More
+		// *Temporary* Create a Button at the bottom to add more strings
 		Button addStringButton = new Button(this);
 		addStringButton.setText("+Add String");
+		stringList.addFooterView(addStringButton);
 		
+		// *Temporary* Create a Header Title for the ListView
 		TextView headerTitle = new TextView(this);
 		headerTitle.setText("This is the Title");
-		// Adding button to listview at footer
 		stringList.addHeaderView(headerTitle);
-		stringList.addFooterView(addStringButton);
+		
 		
 		//Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
 		//startActivity(intent);
 		
 		
 		final ArrayList<GuitarTensionCalc> stringArray = new ArrayList<GuitarTensionCalc>();
-		//final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray, )
+		final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray,this);
+		stringList.setAdapter(adapter);
 		
 		
 		
