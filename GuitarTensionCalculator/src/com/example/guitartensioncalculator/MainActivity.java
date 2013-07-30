@@ -5,12 +5,17 @@ import guitarTensionCalc.GuitarTensionCalc;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -29,17 +34,37 @@ public class MainActivity extends Activity {
 		addStringButton.setText("+Add String");
 		stringList.addFooterView(addStringButton);
 		
+		addStringButton.setOnClickListener(new Button.OnClickListener() { public void onClick (View v){
+			Log.i("button", "Click");
+			
+		}});
+	
+		
+		
+		
+		
 		// *Temporary* Create a Header Title for the ListView
-		TextView headerTitle = new TextView(this);
-		headerTitle.setText("This is the Title");
-		stringList.addHeaderView(headerTitle);
+		//TextView headerTitle = new TextView(this);
+		//headerTitle.setText("This is the Title");
+		//stringList.addHeaderView(headerTitle);
 		
 		
-		//Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
+		
+		
+		final Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
 		//startActivity(intent);
 		
 		
+		LayoutInflater inflater = getLayoutInflater();
+		ViewGroup header = (ViewGroup)inflater.inflate(R.layout.listview_header, stringList, false);
+		stringList.addHeaderView(header, null, false);
+		
 		final ArrayList<GuitarTensionCalc> stringArray = new ArrayList<GuitarTensionCalc>();
+		GuitarTensionCalc temp = new GuitarTensionCalc();
+		temp.freq = 1;
+		temp.scaleLength = 2;
+		temp.unitWeight = 3;
+		stringArray.add(temp);
 		final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray,this);
 		stringList.setAdapter(adapter);
 		
@@ -56,7 +81,21 @@ public class MainActivity extends Activity {
 	    gtc.freq = 329.6;
 //	    gtc.unitWeight = .000022;
 	    Log.i("test1", Double.toString(gtc.calculateTension()));
-	}
+	    
+	    
+	    
+	    
+	    
+	    stringList.setOnItemClickListener(new OnItemClickListener()
+	    {
+	    public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
+	    {
+
+    		Log.i("adapter size", Integer.toString(adapter.getCount()));
+    		startActivity(intent);
+	        }
+	    });
+	    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

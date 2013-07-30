@@ -11,12 +11,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-
     <ListView
         android:id="@+id/GuitarStringList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF" >
+        android:background="#F5F5F5"
+        android:dividerHeight="@dimen/activity_horizontal_margin"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true" >
+
     </ListView>
 
 </LinearLayout>
