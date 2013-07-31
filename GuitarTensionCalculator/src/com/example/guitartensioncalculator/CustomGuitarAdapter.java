@@ -18,7 +18,7 @@ public class CustomGuitarAdapter extends BaseAdapter{
 	private ArrayList<GuitarTensionCalc> _gString;
 	
 	Context _context;
-	
+	 
 	//Adapter that binds the user data to the listView
 	CustomGuitarAdapter (ArrayList<GuitarTensionCalc> gString, Context context){
 		_gString = gString;

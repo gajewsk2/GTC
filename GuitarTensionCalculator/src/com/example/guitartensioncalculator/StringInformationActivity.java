@@ -54,7 +54,7 @@ public class StringInformationActivity extends Activity {
 			if(guage.matches("") || guage.matches(".")){
 				Log.i("Gauge", "null");
 			}else{
-
+//
 			Intent returnToCaller = new Intent();
 		    returnToCaller.putExtra("octave", np1.getValue());
 		    returnToCaller.putExtra("note", np2.getValue());

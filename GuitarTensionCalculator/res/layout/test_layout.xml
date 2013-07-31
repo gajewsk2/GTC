@@ -58,7 +58,7 @@
         android:text="String Gauge: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
+    <EditText 
         android:id="@+id/editTextGauge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

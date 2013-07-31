@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 	    Log.i("Caller", Integer.toString(octave));
 	    Log.i("Caller", Integer.toString(note));
 	    Log.i("Caller", Double.toString(guage));
-	    
+	    //
 		GuitarTensionCalc temp = new GuitarTensionCalc();
 		temp.freq = octave;
 		temp.scaleLength = note;
