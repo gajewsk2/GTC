@@ -18,13 +18,16 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
+	final ArrayList<GuitarTensionCalc> stringArray = new ArrayList<GuitarTensionCalc>();
+	final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray,this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		setContentView(R.layout.activity_main);
-		
+		final Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
+
 		
 		// Getting listview from xml
 		ListView stringList = (ListView) findViewById(R.id.GuitarStringList);
@@ -35,6 +38,7 @@ public class MainActivity extends Activity {
 		stringList.addFooterView(addStringButton);
 		
 		addStringButton.setOnClickListener(new Button.OnClickListener() { public void onClick (View v){
+			startActivityForResult(intent, 1);
 			Log.i("button", "Click");
 			
 		}});
@@ -51,21 +55,17 @@ public class MainActivity extends Activity {
 		
 		
 		
-		final Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
-		//startActivity(intent);
 		
 		
 		LayoutInflater inflater = getLayoutInflater();
 		ViewGroup header = (ViewGroup)inflater.inflate(R.layout.listview_header, stringList, false);
 		stringList.addHeaderView(header, null, false);
 		
-		final ArrayList<GuitarTensionCalc> stringArray = new ArrayList<GuitarTensionCalc>();
 		GuitarTensionCalc temp = new GuitarTensionCalc();
 		temp.freq = 1;
 		temp.scaleLength = 2;
 		temp.unitWeight = 3;
 		stringArray.add(temp);
-		final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray,this);
 		stringList.setAdapter(adapter);
 		
 		
@@ -96,6 +96,39 @@ public class MainActivity extends Activity {
 	        }
 	    });
 	    }
+	
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    // TODO Auto-generated method stub
+	    super.onActivityResult(requestCode, resultCode, data);
+	    Intent intent = new Intent();
+	    if (requestCode == 1){
+    		Log.i("Activity", "Returned From Activity:1");
+	    	if(data == null){
+	    		Log.i("Add String", "Data bundle was empty");
+	    		return;
+	    	}
+	    int octave = data.getIntExtra("octave", -1);
+	    int note = data.getIntExtra("note", -1);
+	    Double guage = data.getDoubleExtra("guage", -1);
+
+	    Log.i("Caller", Integer.toString(octave));
+	    Log.i("Caller", Integer.toString(note));
+	    Log.i("Caller", Double.toString(guage));
+	    
+		GuitarTensionCalc temp = new GuitarTensionCalc();
+		temp.freq = octave;
+		temp.scaleLength = note;
+		temp.unitWeight = guage;
+		stringArray.add(temp);
+		adapter.notifyDataSetChanged();
+
+	    
+	    	
+	    }
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
