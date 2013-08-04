@@ -21,22 +21,20 @@ public class StringInformationActivity extends Activity {
 		np1.setMaxValue(10);
 		
 		final NumberPicker np2 = (NumberPicker) findViewById(R.id.numberPicker2);
-		String[] notes = new String[15];
+		String[] notes = new String[12];
 		notes[0] = "A";
-		notes[1] = "B";
-		notes[2] = "C";
-		notes[3] = "D";
-		notes[4] = "E";
-		notes[5] = "A#";
-		notes[6] = "B#";
-		notes[7] = "C#";
-		notes[8] = "D#";
-		notes[9] = "E#";
-		notes[10] = "Ab";
-		notes[11] = "Bb";
-		notes[12] = "Cb";
-		notes[13] = "Db";
-		notes[14] = "E#/Db";
+		notes[1] = "A#/Bb";
+		notes[2] = "B";
+		notes[3] = "C";
+		notes[4] = "C#/Db";
+		notes[5] = "D";
+		notes[6] = "D#/Eb";
+		notes[7] = "E";
+		notes[8] = "F";
+		notes[9] = "F#/Gb";
+		notes[10] = "G";
+		notes[11] = "G#/Ab";
+
 		np2.setMaxValue(notes.length-1);
 		np2.setMinValue(0);
 		np2.setWrapSelectorWheel(true);

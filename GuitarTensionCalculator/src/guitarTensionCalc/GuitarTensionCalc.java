@@ -12,6 +12,8 @@ public class GuitarTensionCalc {
 		public char accidental;
 		public int octave;
 		
+		public char accidentalChar;
+		
 		public GuitarTensionCalc()
 		{
 			
@@ -22,6 +24,8 @@ public class GuitarTensionCalc {
 			note = 'x';
 			accidental = 'n';
 			octave = 11;
+			
+			accidentalChar = ' ';
 			
 		}
 		
@@ -105,5 +109,83 @@ public class GuitarTensionCalc {
 			return (freq* Math.pow(2, octave) );
 		}
 		
+		
+		public void setFreqVars(int userInput){
+			/*String[] notes = new String[12];
+			notes[0] = "A";
+			notes[1] = "A#/Bb";
+			notes[2] = "B";
+			notes[3] = "C";
+			notes[4] = "C#/Db";
+			notes[5] = "D";
+			notes[6] = "D#/Eb";
+			notes[7] = "E";
+			notes[8] = "F";
+			notes[9] = "F#/Gb";
+			notes[10] = "G";
+			notes[11] = "G#/Ab";*/
+			
+			switch (userInput){
+			case -1:
+				Log.e("error", "User value was not correctly passed to main activity,  -1");
+				break;
+			case 0:
+				note = 'a';
+				accidental='n';
+				break;
+			case 1:
+				note = 'a';
+				accidental = 's';
+				accidentalChar = '#';
+				break;
+			case 2:
+				note = 'b';
+				accidental = 'n';
+				break;
+			case 3:
+				note = 'c';
+				accidental = 'n';
+				break;
+			case 4:
+				note = 'c';
+				accidental = 's';
+				accidentalChar = '#';
+				break;
+			case 5:
+				note = 'd';
+				accidental = 'n';
+				break;
+			case 6:
+				note = 'd';
+				accidental = 's';
+				accidentalChar = '#';
+				break;
+			case 7:
+				note = 'e';
+				accidental = 'n';
+				break;
+			case 8:
+				note = 'f';
+				accidental = 'n';
+				break;
+			case 9:
+				note = 'f';
+				accidental = 's';
+				accidentalChar = '#';
+				break;
+			case 10:
+				note = 'g';
+				accidental = 'n';
+				break;
+			case 11:
+				note = 'g';
+				accidental = 's';
+				accidentalChar = '#';
+				break;
+			default:
+				Log.e("error", "error getting user input, number out of bounds");
+				
+			}
+		}
 		
 }

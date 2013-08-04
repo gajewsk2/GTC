@@ -4,7 +4,10 @@ import guitarTensionCalc.GuitarTensionCalc;
 
 import java.util.ArrayList;
 
+import android.R.bool;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,11 +18,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 
 public class MainActivity extends Activity {
 	final ArrayList<GuitarTensionCalc> stringArray = new ArrayList<GuitarTensionCalc>();
 	final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray,this);
+	double scaleLength = 0;
+	boolean imperial = true;
+	final Context parentContext = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,9 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		final Intent intent = new Intent(MainActivity.this, StringInformationActivity.class);
 
+		
+
+		
 		
 		// Getting listview from xml
 		ListView stringList = (ListView) findViewById(R.id.GuitarStringList);
@@ -45,27 +56,84 @@ public class MainActivity extends Activity {
 	
 		
 		
-		
-		
-		// *Temporary* Create a Header Title for the ListView
-		//TextView headerTitle = new TextView(this);
-		//headerTitle.setText("This is the Title");
-		//stringList.addHeaderView(headerTitle);
-		
-		
-		
-		
-		
-		
 		LayoutInflater inflater = getLayoutInflater();
 		ViewGroup header = (ViewGroup)inflater.inflate(R.layout.listview_header, stringList, false);
 		stringList.addHeaderView(header, null, false);
 		
-		GuitarTensionCalc temp = new GuitarTensionCalc();
+		final Button setScale_1 = (Button)findViewById(R.id.button1);
+		Button setScale_2 = (Button)findViewById(R.id.button2);
+		
+		
+		setScale_1.setOnClickListener(new Button.OnClickListener() { public void onClick (View v){
+			Log.i("header", "Click1");
+			
+			final Dialog dialog = new Dialog(parentContext);
+			dialog.setContentView(R.layout.scale_length);
+			dialog.setTitle("Set Scale Length");
+ 
+			// set the custom dialog components - text, image and button
+			final EditText editTextScale = (EditText) dialog.findViewById(R.id.editTextScale);
+			final Switch switchScale = (Switch)dialog.findViewById(R.id.switch1);
+			Button buttonSubmit = (Button)dialog.findViewById(R.id.button2);
+
+			buttonSubmit.setOnClickListener(new Button.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					String temp1 = editTextScale.getText().toString();
+					boolean temp2 = switchScale.isChecked();
+					scaleLength = Double.parseDouble(temp1);
+					imperial = temp2;
+					setScale_1.setText("Scale Length : " + temp1 + (imperial?"in":"cm"));
+					Log.i("edit", temp1);
+					Log.i("switch",Boolean.toString(temp2));
+					dialog.dismiss();
+				}
+			});
+			dialog.show();
+		}});
+		
+		setScale_2.setOnClickListener(new Button.OnClickListener() { public void onClick (View v){
+			Log.i("header", "Click2");
+			
+			final Dialog dialog = new Dialog(parentContext);
+			dialog.setContentView(R.layout.scale_length);
+			dialog.setTitle("Set Scale Length");
+ 
+			// set the custom dialog components - text, image and button
+			final EditText editTextScale = (EditText) dialog.findViewById(R.id.editTextScale);
+			final Switch switchScale = (Switch)dialog.findViewById(R.id.switch1);
+			Button buttonSubmit = (Button)dialog.findViewById(R.id.button2);
+
+			buttonSubmit.setOnClickListener(new Button.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					String temp1 = editTextScale.getText().toString();
+					boolean temp2 = switchScale.isChecked();
+					scaleLength = Double.parseDouble(temp1);
+					imperial = temp2;
+					Log.i("edit", temp1);
+					Log.i("switch",Boolean.toString(temp2));
+					dialog.dismiss();
+				}
+			});
+			dialog.show();		
+		}});
+		
+		
+		/*final Button headerButton = new Button(this);
+		headerButton.setText("Set Scale Length");
+		stringList.addHeaderView(headerButton);
+		
+		headerButton.setOnClickListener(new Button.OnClickListener() { public void onClick (View v){
+			Log.i("header", "Click");
+			headerButton.setVisibility(View.GONE);
+		}});*/
+		
+/*		GuitarTensionCalc temp = new GuitarTensionCalc();
 		temp.freq = 1;
 		temp.scaleLength = 2;
 		temp.unitWeight = 3;
-		stringArray.add(temp);
+		stringArray.add(temp);*/
 		stringList.setAdapter(adapter);
 		
 		
@@ -122,12 +190,20 @@ public class MainActivity extends Activity {
 		temp.freq = octave;
 		temp.scaleLength = note;
 		temp.unitWeight = guage;
+		temp.setFreqVars(note);
+		temp.calculateFreq();
+		Log.i("note", Character.toString(temp.note));
 		stringArray.add(temp);
 		adapter.notifyDataSetChanged();
 
 	    
 	    	
 	    }
+	}
+	
+	// Call when the user changes the guitar scale length to update the strings
+	public void onScaleChange(){
+		
 	}
 
 	@Override

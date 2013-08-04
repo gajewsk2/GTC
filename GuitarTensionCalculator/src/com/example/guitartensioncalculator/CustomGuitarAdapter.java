@@ -58,7 +58,7 @@ public class CustomGuitarAdapter extends BaseAdapter{
         //Gets the address of the Buttons on the ListView Row
 		TextView frequencyButton = (TextView) v.findViewById(R.id.buttonFrequency);
 		TextView gaugeButton = (TextView) v.findViewById(R.id.buttonGauge);
-		TextView typeButton = (TextView) v.findViewById(R.id.buttonType);
+		TextView noteButton = (TextView) v.findViewById(R.id.buttonNote);
 
 		//Gets the Values from the gString to set on the ListView row
 		GuitarTensionCalc guitarString = _gString.get(position);
@@ -66,7 +66,7 @@ public class CustomGuitarAdapter extends BaseAdapter{
 		//Sets the Correct Values to the Buttons  
 		frequencyButton.setText(Double.toString(guitarString.freq));
 		gaugeButton.setText(Double.toString(guitarString.unitWeight));
-		typeButton.setText(Double.toString(guitarString.scaleLength));
+		noteButton.setText(Character.toString(guitarString.note).toUpperCase() + Character.toString(guitarString.accidentalChar));
 		
 		return v;
 	}
