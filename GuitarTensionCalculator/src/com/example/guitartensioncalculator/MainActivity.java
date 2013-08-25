@@ -180,18 +180,23 @@ public class MainActivity extends Activity {
 	    	}
 	    int octave = data.getIntExtra("octave", -1);
 	    int note = data.getIntExtra("note", -1);
-	    Double guage = data.getDoubleExtra("guage", -1);
-
+	    Double gauge = data.getDoubleExtra("gauge", -1);
+	    int strType = data.getIntExtra("strType", -1);
+	    
 	    Log.i("Caller", Integer.toString(octave));
 	    Log.i("Caller", Integer.toString(note));
-	    Log.i("Caller", Double.toString(guage));
+	    Log.i("Caller", Double.toString(gauge));
 	    //
 		GuitarTensionCalc temp = new GuitarTensionCalc();
 		temp.freq = octave;
 		temp.scaleLength = note;
-		temp.unitWeight = guage;
+		temp.gauge = gauge;
+		temp.strType = strType;
+		
 		temp.setFreqVars(note);
 		temp.calculateFreq();
+		temp.getUnitWeight(strType, gauge);
+		
 		Log.i("note", Character.toString(temp.note));
 		stringArray.add(temp);
 		adapter.notifyDataSetChanged();

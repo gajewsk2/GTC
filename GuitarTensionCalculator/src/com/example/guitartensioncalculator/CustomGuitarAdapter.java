@@ -59,15 +59,22 @@ public class CustomGuitarAdapter extends BaseAdapter{
 		TextView frequencyButton = (TextView) v.findViewById(R.id.buttonFrequency);
 		TextView gaugeButton = (TextView) v.findViewById(R.id.buttonGauge);
 		TextView noteButton = (TextView) v.findViewById(R.id.buttonNote);
+		TextView octaveButton = (TextView) v.findViewById(R.id.buttonOctave);
+		
+		TextView stringTypeButton = (TextView) v.findViewById(R.id.buttonStringType);
+		TextView tensionButton = (TextView) v.findViewById(R.id.buttonTension);
 
 		//Gets the Values from the gString to set on the ListView row
 		GuitarTensionCalc guitarString = _gString.get(position);
 		
 		//Sets the Correct Values to the Buttons  
-		frequencyButton.setText(Double.toString(guitarString.freq));
-		gaugeButton.setText(Double.toString(guitarString.unitWeight));
-		noteButton.setText(Character.toString(guitarString.note).toUpperCase() + Character.toString(guitarString.accidentalChar));
+//		frequencyButton.setText(Double.toString(guitarString.freq));
 		
+//		gaugeButton.setText(Double.toString(guitarString.unitWeight));
+		noteButton.setText(Character.toString(guitarString.note).toUpperCase() + Character.toString(guitarString.accidentalChar));
+		stringTypeButton.setText(guitarString.strStrType);
+		octaveButton.setText(Integer.toString(guitarString.octave));
+		tensionButton.setText(Double.toString(guitarString.calculateTension()));
 		return v;
 	}
 	

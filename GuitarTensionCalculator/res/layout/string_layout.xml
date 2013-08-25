@@ -28,4 +28,31 @@
         android:layout_centerHorizontal="true"
         android:text="Note     " />
 
+    <TextView
+        android:id="@+id/buttonStringType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/buttonFrequency"
+        android:layout_marginTop="26dp"
+        android:text="Frequency" />
+
+    <TextView
+        android:id="@+id/buttonTension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonStringType"
+        android:layout_alignBottom="@+id/buttonStringType"
+        android:layout_alignRight="@+id/buttonNote"
+        android:text="Frequency" />
+
+    <TextView
+        android:id="@+id/buttonOctave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonTension"
+        android:layout_alignBottom="@+id/buttonTension"
+        android:layout_alignParentRight="true"
+        android:text="Tension" />
+
 </RelativeLayout>

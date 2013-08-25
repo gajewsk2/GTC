@@ -5,36 +5,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <NumberPicker
-        android:id="@+id/numberPicker1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="51dp"
-        android:scrollbars="vertical" />
-
-    <NumberPicker
-        android:id="@+id/numberPicker2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/numberPicker1"
-        android:scrollbars="vertical" />
-
     <TextView
         android:id="@+id/textViewOctave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/numberPicker2"
+        android:layout_above="@+id/numberPicker1"
         android:layout_alignParentLeft="true"
-        android:text="Octave" />
+        android:text="Note" />
 
     <Button
         android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/numberPicker1"
+        android:layout_below="@+id/numberPicker2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="96dp"
         android:text="Submit" />
@@ -45,15 +28,15 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewOctave"
         android:layout_alignBottom="@+id/textViewOctave"
-        android:layout_alignLeft="@+id/numberPicker2"
-        android:text="Note" />
+        android:layout_alignLeft="@+id/numberPicker1"
+        android:text="Octave" />
 
     <TextView
         android:id="@+id/textViewGauge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/numberPicker1"
+        android:layout_below="@+id/numberPicker2"
         android:layout_marginTop="39dp"
         android:text="String Gauge: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -67,5 +50,38 @@
         android:layout_alignParentRight="true"
         android:ems="5"
         android:inputType="numberDecimal" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/numberPicker1" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonSubmit"
+        android:layout_toRightOf="@+id/numberPicker2"
+        android:scrollbars="vertical" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="63dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewNote"
+        android:layout_alignBottom="@+id/textViewNote"
+        android:layout_alignLeft="@+id/numberPicker3"
+        android:text="String Type" />
 
 </RelativeLayout>
