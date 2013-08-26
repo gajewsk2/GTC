@@ -195,14 +195,16 @@ public class MainActivity extends Activity {
 	    Log.i("Caller", Double.toString(gauge));
 	    //
 		GuitarTensionCalc temp = new GuitarTensionCalc();
-		temp.freq = octave;
-		temp.scaleLength = note;
+		temp.octave = octave;
+		temp.scaleLength = scaleLength;
 		temp.gauge = gauge;
 		temp.strType = strType;
 		
 		temp.setFreqVars(note);
 		temp.calculateFreq();
 		temp.getUnitWeight(strType, gauge);
+		
+		
 		
 		Log.i("note", Character.toString(temp.note));
 		stringArray.add(temp);

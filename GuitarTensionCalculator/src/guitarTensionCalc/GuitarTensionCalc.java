@@ -36,6 +36,7 @@ public class GuitarTensionCalc {
 		
 		public double calculateTension()
 		{	//T(Tension) = (UW x (2 x L x F)2) / 386.4
+			
 	        if( unitWeight == 0 )
                 Log.w("warning","unitWeight = 0");
             if( scaleLength == 0)
