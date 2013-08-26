@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class GuitarTensionCalc {
 	
-		public double unitWeight;
+		public double unitWeight; 
 		public double scaleLength;
 		public double freq;
 		public double gauge;

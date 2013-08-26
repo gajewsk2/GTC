@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/editTextScale"
         android:layout_toRightOf="@+id/editTextScale"
+        android:checked="true"
         android:textOff="cm"
         android:textOn="in" />
 

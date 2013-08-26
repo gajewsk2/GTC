@@ -80,12 +80,15 @@ public class MainActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					String temp1 = editTextScale.getText().toString();
+					if(!temp1.matches(""))
+					{
 					boolean temp2 = switchScale.isChecked();
 					scaleLength = Double.parseDouble(temp1);
 					imperial = temp2;
 					setScale_1.setText("Scale Length : " + temp1 + (imperial?"in":"cm"));
 					Log.i("edit", temp1);
 					Log.i("switch",Boolean.toString(temp2));
+					}
 					dialog.dismiss();
 				}
 			});
@@ -109,10 +112,14 @@ public class MainActivity extends Activity {
 				public void onClick(View v) {
 					String temp1 = editTextScale.getText().toString();
 					boolean temp2 = switchScale.isChecked();
+					if(!temp1.matches(""))
+					{
 					scaleLength = Double.parseDouble(temp1);
 					imperial = temp2;
+					setScale_1.setText("Scale Length : " + temp1 + (imperial?"in":"cm"));
 					Log.i("edit", temp1);
 					Log.i("switch",Boolean.toString(temp2));
+					}
 					dialog.dismiss();
 				}
 			});
