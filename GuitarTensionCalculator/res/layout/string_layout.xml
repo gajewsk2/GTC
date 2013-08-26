@@ -6,53 +6,44 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/buttonFrequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Frequency" />
-
-    <TextView
-        android:id="@+id/buttonGauge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="Gauge    " />
-
-    <TextView
         android:id="@+id/buttonNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Note     " />
-
-    <TextView
-        android:id="@+id/buttonStringType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/buttonFrequency"
-        android:layout_marginTop="26dp"
-        android:text="Frequency" />
+        android:text="Note" />
 
     <TextView
         android:id="@+id/buttonTension"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonStringType"
-        android:layout_alignBottom="@+id/buttonStringType"
-        android:layout_alignRight="@+id/buttonNote"
-        android:text="Frequency" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Tension" />
+
+    <TextView
+        android:id="@+id/buttonStringType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="26dp"
+        android:layout_toLeftOf="@+id/buttonTension"
+        android:text="String Type" />
 
     <TextView
         android:id="@+id/buttonOctave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonTension"
-        android:layout_alignBottom="@+id/buttonTension"
-        android:layout_alignParentRight="true"
-        android:text="Tension" />
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/buttonNote"
+        android:text="Octave" />
+
+    <TextView
+        android:id="@+id/buttonGauge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/buttonStringType"
+        android:text="Gauge" />
 
 </RelativeLayout>

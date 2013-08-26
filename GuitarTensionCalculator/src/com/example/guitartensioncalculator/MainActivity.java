@@ -25,10 +25,11 @@ import android.widget.Switch;
 public class MainActivity extends Activity {
 	final ArrayList<GuitarTensionCalc> stringArray = new ArrayList<GuitarTensionCalc>();
 	final CustomGuitarAdapter adapter = new CustomGuitarAdapter(stringArray,this);
-	double scaleLength = 0;
 	boolean imperial = true;
 	final Context parentContext = this;
-
+	
+	double scaleLength = 26.5;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -88,8 +89,9 @@ public class MainActivity extends Activity {
 					setScale_1.setText("Scale Length : " + temp1 + (imperial?"in":"cm"));
 					Log.i("edit", temp1);
 					Log.i("switch",Boolean.toString(temp2));
+					Log.i("sl",Double.toString(scaleLength));
 					}
-					dialog.dismiss();
+					dialog.dismiss();		
 				}
 			});
 			dialog.show();
@@ -144,18 +146,16 @@ public class MainActivity extends Activity {
 		stringList.setAdapter(adapter);
 		
 		
-		
-		GuitarTensionCalc gtc = new GuitarTensionCalc();
-	    gtc.scaleLength = 25.5;
+
 //	            E - 82.4
 //	            A - 110
 //	            D - 146.8
 //	            G - 196
 //	            B - 246.9
 //	            E - 329.6
-	    gtc.freq = 329.6;
-//	    gtc.unitWeight = .000022;
-	    Log.i("test1", Double.toString(gtc.calculateTension()));
+//	    temp.freq = 329.6;
+//	    temp.unitWeight = .000022;
+//	    Log.i("test1", Double.toString(scaleLength));
 	    
 	    
 	    
@@ -193,20 +193,20 @@ public class MainActivity extends Activity {
 	    Log.i("Caller", Integer.toString(octave));
 	    Log.i("Caller", Integer.toString(note));
 	    Log.i("Caller", Double.toString(gauge));
+	    Log.i("Caller", Double.toString(scaleLength));
 	    //
 		GuitarTensionCalc temp = new GuitarTensionCalc();
 		temp.octave = octave;
-		temp.scaleLength = scaleLength;
 		temp.gauge = gauge;
 		temp.strType = strType;
-		
+		temp.scaleLength = scaleLength;
 		temp.setFreqVars(note);
 		temp.calculateFreq();
 		temp.getUnitWeight(strType, gauge);
 		
 		
 		
-		Log.i("note", Character.toString(temp.note));
+		
 		stringArray.add(temp);
 		adapter.notifyDataSetChanged();
 
