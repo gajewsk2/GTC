@@ -188,8 +188,8 @@ public class MainActivity extends Activity {
 	    int octave = data.getIntExtra("octave", -1);
 	    int note = data.getIntExtra("note", -1);
 	    Double gauge = data.getDoubleExtra("gauge", -1);
-	    int strType = data.getIntExtra("strType", -1);
-	    
+	    int strType = data.getIntExtra("StrType", -1);
+	    Log.e("this", Integer.toString(strType));
 	    Log.i("Caller", Integer.toString(octave));
 	    Log.i("Caller", Integer.toString(note));
 	    Log.i("Caller", Double.toString(gauge));

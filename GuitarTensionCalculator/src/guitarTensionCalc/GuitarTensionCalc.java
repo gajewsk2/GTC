@@ -321,7 +321,7 @@ public class GuitarTensionCalc {
 			
 			case 0://pl
 				strStrType = "PL";
-				for(int i=PL.length; i>=0; --i)
+				for(int i=PL.length-1; i>=0; --i)
 					if(PL[i][0] <= gauge)
 						return (double)PL[i][0];
 						
@@ -329,7 +329,7 @@ public class GuitarTensionCalc {
 			
 			case 1://PB
 				strStrType = "PB";
-				for(int i=PB.length; i>=0; --i)
+				for(int i=PB.length-1; i>=0; --i)
 					if(PB[i][0] <= gauge)
 						return (double)PB[i][0];
 
@@ -337,14 +337,14 @@ public class GuitarTensionCalc {
 			
 			case 2://xs
 				strStrType = "XS";
-				for(int i=XS.length; i>=0; --i)
+				for(int i=XS.length-1; i>=0; --i)
 					if(XS[i][0] <= gauge)
 						return (double)XS[i][0];
 			break;
 			
 			case 3://NW
 				strStrType = "NW";
-				for(int i=NW.length; i>=0; --i)
+				for(int i=NW.length-1; i>=0; --i)
 					if(NW[i][0] <= gauge)
 						return (double)NW[i][0];
 
@@ -352,13 +352,14 @@ public class GuitarTensionCalc {
 			
 			case 4://hr
 				strStrType = "HR";
-				for(int i=HR.length; i>=0; --i)
+				for(int i=HR.length-1; i>=0; --i)
 					if(HR[i][0] <= gauge)
 						return (double)HR[i][0];
 			break;
 			
 			default:
 				Log.e("error", "strType was not correctly passed to main activity,  -1");
+				Log.e("error-1", Integer.toString(strType));
 				return -1;
 			}
 			return -1;
