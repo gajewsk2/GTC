@@ -195,32 +195,32 @@ public class GuitarTensionCalc {
 		}
 		
 		
-		public double getUnitWeight(int strType, double gauge){
-			
+		public void setUnitWeight(int strType, double gauge){
+			Log.e("UWeight", Integer.toString(strType) + "   " + Double.toString(gauge));
 			double[][] PL = {
-					{ .007	, .00001085	},
-					{ .008	, .00001418 },
-					{ .0085	, .00001601 },
-					{ .009	, .00001794 },
-					{ .0095	, .00001999 },
-					{ .010	, .00002215 },
-					{ .0105	, .00002442 },
-					{ .011	, .00002680 },
-					{ .0115	, .00002930 },
-					{ .012	, .00003190 },
-					{ .013	, .00003744 },
-					{ .0135	, .00004037 },
-					{ .014	, .00004342 },
-					{ .015	, .00004984 },
-					{ .016	, .00005671 },
-					{ .017	, .00006402 },
-					{ .018	, .00007177 },
-					{ .019	, .00007997 },
-					{ .020	, .00008861 },
-					{ .022	, .00010722 },
-					{ .024	, .00012760 },
-					{ .026	, .00014975 }
-					};
+			{ .007	, .00001085	},
+			{ .008	, .00001418 },
+			{ .0085	, .00001601 },
+			{ .009	, .00001794 },
+			{ .0095	, .00001999 },
+			{ .010	, .00002215 },
+			{ .0105	, .00002442 },
+			{ .011	, .00002680 },
+			{ .0115	, .00002930 },
+			{ .012	, .00003190 },
+			{ .013	, .00003744 },
+			{ .0135	, .00004037 },
+			{ .014	, .00004342 },
+			{ .015	, .00004984 },
+			{ .016	, .00005671 },
+			{ .017	, .00006402 },
+			{ .018	, .00007177 },
+			{ .019	, .00007997 },
+			{ .020	, .00008861 },
+			{ .022	, .00010722 },
+			{ .024	, .00012760 },
+			{ .026	, .00014975 }
+			};
 			double[][] PB = {
 			{ .020	, .00008106 },
 			{ .021	, .00008944 },
@@ -304,18 +304,18 @@ public class GuitarTensionCalc {
 			{ .080	, .00115011	},
 			};
 			double[][] HR = {
-					{ .022	, .00011271	},
-					{ .024	, .00013139	},
-					{ .026	, .00015224	},
-					{ .030	, .00019916	},
-					{ .032	, .00022329	},
-					{ .036	, .00027556	},
-					{ .039	, .00032045	},
-					{ .042	, .00036404	},
-					{ .046	, .00043534	},
-					{ .052	, .00054432	},
-					{ .056	, .00062758	}
-					};
+			{ .022	, .00011271	},
+			{ .024	, .00013139	},
+			{ .026	, .00015224	},
+			{ .030	, .00019916	},
+			{ .032	, .00022329	},
+			{ .036	, .00027556	},
+			{ .039	, .00032045	},
+			{ .042	, .00036404	},
+			{ .046	, .00043534	},
+			{ .052	, .00054432	},
+			{ .056	, .00062758	}
+			};
 
 			switch(strType){
 			
@@ -324,7 +324,7 @@ public class GuitarTensionCalc {
 				strStrType = "PL";
 				for(int i=PL.length-1; i>=0; --i)
 					if(PL[i][0] <= gauge)
-						return (double)PL[i][0];
+						unitWeight = (double)PL[i][0];
 						
 			break;
 			
@@ -332,7 +332,7 @@ public class GuitarTensionCalc {
 				strStrType = "PB";
 				for(int i=PB.length-1; i>=0; --i)
 					if(PB[i][0] <= gauge)
-						return (double)PB[i][0];
+						unitWeight = (double)PB[i][0];
 
 			break;
 			
@@ -340,14 +340,14 @@ public class GuitarTensionCalc {
 				strStrType = "XS";
 				for(int i=XS.length-1; i>=0; --i)
 					if(XS[i][0] <= gauge)
-						return (double)XS[i][0];
+						unitWeight =  (double)XS[i][0];
 			break;
 			
 			case 3://NW
 				strStrType = "NW";
 				for(int i=NW.length-1; i>=0; --i)
 					if(NW[i][0] <= gauge)
-						return (double)NW[i][0];
+						unitWeight =  (double)NW[i][0];
 
 			break;
 			
@@ -355,15 +355,19 @@ public class GuitarTensionCalc {
 				strStrType = "HR";
 				for(int i=HR.length-1; i>=0; --i)
 					if(HR[i][0] <= gauge)
-						return (double)HR[i][0];
+						unitWeight =  (double)HR[i][0];
 			break;
 			
 			default:
 				Log.e("error", "strType was not correctly passed to main activity,  -1");
 				Log.e("error-1", Integer.toString(strType));
-				return -1;
+				unitWeight =  -1;
 			}
-			return -1;
+			return;
+		}
+		
+		public void setScaleLength(double _scaleLength){
+			scaleLength = _scaleLength;
 		}
 
 }

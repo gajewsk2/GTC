@@ -199,10 +199,12 @@ public class MainActivity extends Activity {
 		temp.octave = octave;
 		temp.gauge = gauge;
 		temp.strType = strType;
-		temp.scaleLength = scaleLength;
+		//temp.scaleLength = scaleLength;
+		temp.setScaleLength(scaleLength);
+		
 		temp.setFreqVars(note);
 		temp.calculateFreq();
-		temp.getUnitWeight(strType, gauge);
+		temp.setUnitWeight(strType, gauge);
 		
 		
 		
